@@ -19,14 +19,15 @@
           <div class="navbar-header navbar-left nav-item">
             <a class="navbar-brand" rel="home" title="Home Page" ng-href="#/">MySHOP</a>
           </div>
-          <div class="navbar-header navbar-right nav-item" ng-if="authenticated == true">
+
+          <div class="navbar-header navbar-right nav-item" ng-if="authenticated == false">
+            <a class="navbar-brand" rel="home" title="Login" ng-href="#/login">Login</a>
+          </div>
+          <div class="navbar-header navbar-right nav-item">
             <a class="navbar-brand" rel="home" title="Cart" href="">Cart</a>
           </div>
           <div class="navbar-header navbar-right nav-item" ng-if="authenticated == true">
             <a class="navbar-brand" rel="home" title="Cabinet" ng-href="#/cabinet">Cabinet</a>
-          </div>
-          <div class="navbar-header navbar-right nav-item" ng-if="authenticated == false">
-            <a class="navbar-brand" rel="home" title="Login" ng-href="#/login">Login</a>
           </div>
         </div>
       </div>
@@ -51,5 +52,6 @@
   <script src="app/homeCtrl.js"></script>
   <script src="app/adminCtrl.js"></script>
   <script src="app/userCtrl.js"></script>
+  <script src="app/cartCtrl.js"></script>
 </html>
 

@@ -1,5 +1,6 @@
 app.controller('userCtrl', function ($scope, $rootScope, $http) {
-    $http.get('api/user/getUserdata').then(function(result) {
+    $scope.data = [];
+    $http.get('api/user/getUserdata.php').then(function(result) {
         $scope.data = result.data;
     });
 });

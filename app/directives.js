@@ -29,3 +29,31 @@ app.directive('passwordMatch', [function () {
         }
     };
 }]);
+
+
+/*app.directive('cartBar', [function () {
+    return {
+        restrict : 'E',
+        controller : 'cartCtrl',
+        scope: {},
+        template: "<div class='navbar-header navbar-right nav-item'><a class='navbar-brand' title='Cart' href=''>Cart {{data.length}}</a></div>",
+        link:function(scope, element, attrs){
+
+        }
+    };
+}]);
+
+
+app.directive('addCartBtn', [function () {
+    return {
+        restrict : 'E',
+        controller : 'cartCtrl',
+        scope: {
+            prodt:'@'
+        },
+        template: "<button class='btn' style='width:100%;' ng-click='addToCart({{scope.prodt}})'>Add to cart</button>",
+        link:function(scope, element, attrs){
+
+        }
+    };
+}]);*/

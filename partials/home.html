@@ -1,23 +1,38 @@
 <div class="row">
     <div class="col-lg-3">
+        {{totalItems}}
         <div class="list-group">
-            <a href="#" class="list-group-item" ng-repeat="cat in categories">{{cat.CategoryName}}</a>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button" ng-click="searchDB()">Search</button>
+                </span>
+            </div>
+        </div>
+        <div class="list-group">
+            <a href="" class="list-group-item" ng-repeat="cat in categories" ng-click="setCategory(cat)" 
+            ng-style="{ 'background-color' : (cat.CategoryName == category.CategoryName) ? '#F0F0F0' : 'white' }">{{cat.CategoryName}}</a>
         </div>
     </div>
     <div class="col-lg-9">
         <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4" ng-repeat="value in data">
+            <div class="col-lg-4 col-md-6 mb-4" style="height:500px; padding:10px;" ng-repeat="value in data">
                 <div class="card h-100">
-                    <a href="#">
-                        <img class="img-responsive" data-ng-src="data:image/png;base64,{{ value.ProductImage }}" alt="">
-                    </a>
-                    <div class="card-body">
+                    <div class="imagebox">
+                        <a href="">
+                            <img class="img-responsive" style="max-width: 100%; max-height:300px; display:block; margin:auto;" data-ng-src="data:image/png;base64,{{ value.ProductImage }}"
+                                alt="">
+                        </a>
+                    </div>
+
+                    <div class="card-body" style="height:145px; overflow:hidden;">
                         <h4 class="card-title">
-                            <a href="#">{{ value.ProductName }}</a>
+                            <a href="">{{ value.ProductName }}</a>
                         </h4>
-                        <h5>{{ value.ProductPrice }}</h5>
+                        <h5>{{ value.ProductPrice | currency }}</h5>
                         <p class="card-text">{{ value.ProductDescription }}</p>
                     </div>
+                    <button class="btn" style="width:100%;" ng-click="addToCart(value)">Add to cart</button>
                 </div>
             </div>
         </div>
