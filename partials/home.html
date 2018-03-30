@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-lg-3">
+        <div class="list-group">
+            <a href="#" class="list-group-item" ng-repeat="cat in categories">{{cat.CategoryName}}</a>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" ng-repeat="value in data">
+                <div class="card h-100">
+                    <a href="#">
+                        <img class="img-responsive" data-ng-src="data:image/png;base64,{{ value.ProductImage }}" alt="">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">{{ value.ProductName }}</a>
+                        </h4>
+                        <h5>{{ value.ProductPrice }}</h5>
+                        <p class="card-text">{{ value.ProductDescription }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
