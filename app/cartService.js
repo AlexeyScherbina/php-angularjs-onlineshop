@@ -15,6 +15,17 @@ app.service('cartService', function() {
       }
     }
 
+    this.deleteProduct = function(prod){
+      for(var i = 0; i < this.products.length; i++){
+        if(this.products[i].ProductID == prod.ProductID){
+          this.products[i].count -=1;
+          if(this.products[i].count <= 0){
+            this.products.splice(i,1);
+          }
+        }
+      }
+    }
+
     this.getTotal = function(){
       var sum = 0;
       for(var i = 0; i < this.products.length; i++){

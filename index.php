@@ -23,10 +23,9 @@
         <div class="navbar-header navbar-right nav-item" ng-if="authenticated == false">
           <a class="navbar-brand" rel="home" title="Login" ng-href="#/login">Login</a>
         </div>
+        
         <cart-bar></cart-bar>
-        <div class="navbar-header navbar-right nav-item">
-          <a class="navbar-brand" rel="home" title="Cart" href="">Cart</a>
-        </div>
+
         <div class="navbar-header navbar-right nav-item" ng-if="authenticated == true">
           <a class="navbar-brand" rel="home" title="Cabinet" ng-href="#/cabinet">Cabinet</a>
         </div>
