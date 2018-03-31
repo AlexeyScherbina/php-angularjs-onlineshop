@@ -6,20 +6,25 @@ app.controller('homeCtrl', function ($scope, $rootScope, $routeParams, $location
     $scope.category = {};
 
     $scope.totalItems = 0;
-    $scope.pageChanged = function(newPage) {
-        getResultsPage(newPage);
-    };
 
+    $scope.getTimes=function(){
+        var pagecount = Math.ceil($scope.totalItems/6);       
+        return new Array(pagecount);
+    };
+    
     getCategories();
 
-    getResultsPage(1);
 
-    function getResultsPage(pageNumber) {
+    $scope.getResultsPage = function(pageNumber) {
         $http.get('api/product/getProducts.php?search='+$scope.searchText+'&page='+pageNumber+'&category='+$scope.category.CategoryID).then(function(result) {
             $scope.data = result.data.data;
             $scope.totalItems = result.data.total;
         });
+        if(pageNumber >= 1){
+        $scope.page = pageNumber;
+        }
     }
+    $scope.getResultsPage(1);
 
     function getCategories() {
         $http.get('api/category/getCategories.php').then(function(result) {
@@ -34,7 +39,7 @@ app.controller('homeCtrl', function ($scope, $rootScope, $routeParams, $location
     }
 
     $scope.searchDB = function(){
-        getResultsPage(1);
+        $scope.getResultsPage(1);
     }
 
 
