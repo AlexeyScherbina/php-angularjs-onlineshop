@@ -1,4 +1,4 @@
-app.controller('homeCtrl', function ($scope, $rootScope, $routeParams, $location, $http) {
+app.controller('homeCtrl', function ($scope, $rootScope, $routeParams, $location, $http, cartService) {
     $scope.data = [];
     $scope.categories = [];
     $scope.page = 1;
@@ -11,9 +11,12 @@ app.controller('homeCtrl', function ($scope, $rootScope, $routeParams, $location
         var pagecount = Math.ceil($scope.totalItems/6);       
         return new Array(pagecount);
     };
-    
+
     getCategories();
 
+    $scope.addToCart = function(prod){
+        cartService.addProduct(prod);
+    }
 
     $scope.getResultsPage = function(pageNumber) {
         $http.get('api/product/getProducts.php?search='+$scope.searchText+'&page='+pageNumber+'&category='+$scope.category.CategoryID).then(function(result) {
@@ -35,12 +38,13 @@ app.controller('homeCtrl', function ($scope, $rootScope, $routeParams, $location
 
     $scope.setCategory = function(cat){
         $scope.category = cat;
-
+        $scope.getResultsPage(1);
     }
 
     $scope.searchDB = function(){
         $scope.getResultsPage(1);
     }
+
 
 
     /*

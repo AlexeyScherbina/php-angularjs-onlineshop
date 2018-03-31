@@ -1,7 +1,5 @@
-app.controller('cartCtrl', function ($scope, $rootScope, $http) {
-    $scope.data = [];
-    $scope.addToCart = function(prod){
-        $scope.data.push(prod);
+app.controller('cartCtrl', function ($scope, $rootScope, $http, cartService) {
+    $scope.getTotal = function(){
+        return cartService.getTotal();
     }
-
 });
