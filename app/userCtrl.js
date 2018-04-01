@@ -12,11 +12,11 @@ app.controller('userCtrl', function ($scope, $rootScope, $location, $http) {
         });
 
     }
-    $scope.applyData() = function (customer) {
+    $scope.applyData = function (customer) {
 
         $http.post("api/user/updateCabData.php",customer).then(function (results) {
             if (results.data.status == "success") {
-                $location.path('dashboard');
+                alert(results.data.message);
             }
         });
 

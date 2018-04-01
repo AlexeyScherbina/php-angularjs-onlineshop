@@ -1,1 +1,85 @@
-admen
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" ng-class="tab==1?'active':''">
+        <a class="nav-link " id="Products-tab" href="" role="tab" ng-click="tab=1;">Products</a>
+    </li>
+    <li class="nav-item" ng-class="tab==2?'active':''">
+        <a class="nav-link" id="Orders-tab" href="" role="tab" ng-click="tab=2;">Orders</a>
+    </li>
+    <li class="nav-item" ng-class="tab==3?'active':''">
+        <a class="nav-link" id="Categories-tab" href="" role="tab" ng-click="tab=3;">Categories</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane" ng-class="tab==1?'show active':'fade'" id="products" role="tabpanel" aria-labelledby="Products-tab">
+        <div class="col-lg-3">
+            {{totalItems}}
+            <div class="list-group" ng-style="{ 'margin-bottom' : (totalItems>6) ? '0px' : '10px' }">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button" ng-click="searchDB()">Search</button>
+                    </span>
+                </div>
+            </div>
+
+            <nav ng-if="totalItems>6">
+                <ul class="pagination">
+                    <li class="page-item" ng-class="page==1 ? 'disabled' : ''">
+                        <a class="page-link" href="" aria-label="Previous" ng-click="getResultsPage(page-1)">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item" ng-repeat="t in getTimes() track by $index">
+                        <a class="page-link" href="" ng-click="getResultsPage($index+1)">{{$index+1}}</a>
+                    </li>
+                    <li class="page-item" ng-class="page==getTimes().length ? 'disabled' : ''">
+                        <a class="page-link" href="" aria-label="Next" ng-click="getResultsPage(page+1)">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="list-group">
+                <a href="" class="list-group-item" ng-repeat="cat in categories" ng-click="setCategory(cat)" ng-style="{ 'background-color' : (cat.CategoryName == category.CategoryName) ? '#F0F0F0' : 'white' }">{{cat.CategoryName}}</a>
+            </div>
+
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="p in products">
+                    <td>{{p.ProductID}}</td>
+                    <td>{{p.ProductName}}</td>
+                    <td>{{p.ProductPrice}}</td>
+                    <td>{{p.ProductDescription}}</td>
+                    <td>{{p.ProductCount}}</td>
+                    <td>{{getCatName(p.CategoryID)}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="tab-pane" ng-class="tab==2?'show active':'fade'" id="orders" role="tabpanel" aria-labelledby="Orders-tab">
+        <p>ngbgbgbggb</p>
+    </div>
+
+
+
+    <div class="tab-pane" ng-class="tab==3?'show active':'fade'" id="categories" role="tabpanel" aria-labelledby="Categories-tab">
+        <p>jmjmjmjm</p>
+    </div>
+</div>
