@@ -33,4 +33,8 @@ app.service('cartService', function() {
       }
       return sum;
     }
+
+    this.clearCart = function(){
+      this.products = [];
+    }
 });

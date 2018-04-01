@@ -17,4 +17,6 @@
     </tbody>
   </table>
 <h2 ng-if="getProducts().length<=0">Your shopping cart is still empty :/</h2>
+<button class="btn" style="float:right;" ng-if="getProducts().length>0 && authenticated == true"  ng-click="sendRequest()">BUY</button>
+<a  ng-href="#/login"><button class="btn" style="float:right;" ng-if="getProducts().length>0 && authenticated == false" >Login to buy</button></a>
 <a ng-href="#/home">Go Home</a>

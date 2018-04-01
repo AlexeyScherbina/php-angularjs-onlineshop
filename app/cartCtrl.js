@@ -1,4 +1,4 @@
-app.controller('cartCtrl', function ($scope, $rootScope, $http, cartService) {
+app.controller('cartCtrl', function ($scope, $rootScope, $http,$location, cartService) {
     $scope.getTotal = function(){
         return cartService.getTotal();
     }
@@ -12,6 +12,12 @@ app.controller('cartCtrl', function ($scope, $rootScope, $http, cartService) {
         cartService.deleteProduct(prod);
     }
     $scope.sendRequest = function(){
-
+        $http.post("api/orders/addOrder.php",$scope.getProducts()).then(function (results) {
+            if (results.data.status == "success") {
+                alert("Your order is pending");
+                $location.path('home');
+                cartService.clearCart();
+            }
+        });
     }
 });

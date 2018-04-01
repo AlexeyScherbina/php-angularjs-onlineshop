@@ -36,7 +36,7 @@ app.directive('cartBar', [function () {
         restrict : 'E',
         controller : 'cartCtrl',
         scope: {},
-        template: "<div class='navbar-header navbar-right nav-item'><a class='navbar-brand' title='Cart' ng-href='#/cart'>Cart {{getTotal()}}</a></div>",
+        template: "<div class='navbar-header navbar-right nav-item'><a class='navbar-brand' title='Cart' ng-href='#/cart'>Cart {{getTotal() | currency}}</a></div>",
         link:function(scope, element, attrs){
 
         }

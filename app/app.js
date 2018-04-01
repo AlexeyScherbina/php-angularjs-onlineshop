@@ -61,17 +61,18 @@ app.config(['$routeProvider',
                     $rootScope.email = results.data.email;
                     $rootScope.role = results.data.role;
                 }
-            });
-            if (next !== undefined) {
-                if ('role' in next) {
-                    if(next.role == 'admin' && $rootScope.role != 'admin'){
-                        $location.path("/login");
-                    }
-                    if(next.role == 'user' && $rootScope.role != 'user'){
-                        $location.path("/login");
+                if (next !== undefined) {
+                    if ('role' in next) {
+                        if(next.role == 'admin' && $rootScope.role != 'admin'){
+                            $location.path("/login");
+                        }
+                        if(next.role == 'user' && $rootScope.role != 'user'){
+                            $location.path("/login");
+                        }
                     }
                 }
-            }
+            });
+            
             //$location.path("/login");
             //var nextUrl = next.$$route.originalPath;
         });

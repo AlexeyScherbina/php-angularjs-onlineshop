@@ -26,8 +26,11 @@
         
         <cart-bar></cart-bar>
 
-        <div class="navbar-header navbar-right nav-item" ng-if="authenticated == true">
+        <div class="navbar-header navbar-right nav-item" ng-if="authenticated == true && role == 'user'">
           <a class="navbar-brand" rel="home" title="Cabinet" ng-href="#/cabinet">Cabinet</a>
+        </div>
+        <div class="navbar-header navbar-right nav-item" ng-if="authenticated == true && role == 'admin'">
+          <a class="navbar-brand" rel="home" title="Admin" ng-href="#/admin">Admin panel</a>
         </div>
       </div>
     </div>
