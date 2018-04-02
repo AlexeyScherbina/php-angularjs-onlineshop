@@ -12,8 +12,7 @@
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane" ng-class="tab==1?'show active':'fade'" id="products" role="tabpanel" aria-labelledby="Products-tab">
         <div>
-            {{totalItems}}
-            <div class="list-group" style="margin-bottom:10px;" >
+            <div class="list-group" style="margin-bottom:10px;margin-top:10px;" >
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
                     <span class="input-group-btn">
@@ -44,7 +43,7 @@
                 </ul>
             </nav>
 
-            <button class="btn" style="width:100%;" ng-click="addProduct(p);">Add product</button>
+            <button class="btn" style="width:100%;" ng-click="addProduct()">Add product</button>
         </div>
 
         <table class="table">

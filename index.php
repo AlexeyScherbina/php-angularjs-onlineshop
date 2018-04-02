@@ -57,5 +57,6 @@
 <script src="app/userCtrl.js"></script>
 <script src="app/cartService.js"></script>
 <script src="app/cartCtrl.js"></script>
-
+<script src="app/productCtrl.js"></script>
+<script src="node_modules\angular-base64-upload\src\angular-base64-upload.js"></script>
 </html>

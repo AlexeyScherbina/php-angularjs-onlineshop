@@ -51,12 +51,12 @@
 	$result = $db->query($sql);
 
 	while($row = $result->fetch_assoc()){
-		$row['ProductImage'] = base64_encode( $row['ProductImage'] );
+		//$row['ProductImage'] = base64_encode( $row['ProductImage'] );
 	    $json[] = $row;
 	}
 	$data['data'] = $json;
 
-	$result =  mysqli_query($db,$sqlTotal);//$mysqli
+	$result =  mysqli_query($db,$sqlTotal);
 	$data['total'] = mysqli_num_rows($result);
 	
 	echo json_encode($data);

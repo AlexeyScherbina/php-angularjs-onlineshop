@@ -140,4 +140,36 @@ app.controller('adminCtrl', function ($scope, $rootScope, $routeParams, $locatio
         $scope.getResultsPage(1);
     }
 
+    $scope.addProduct = function(){
+        $rootScope.productToChangeOrUpdate = {
+            ProductID: "",
+            ProductName: "",
+            ProductPrice: "",
+            ProductCount: "",
+            ProductDescription: "",
+            CategoryID: "",
+            Category: "",
+            ProductImage: ""
+        };
+        $location.path("/product");
+    }
+    $scope.updateProduct = function(prod){
+        $rootScope.productToChangeOrUpdate = prod;
+        for(var i =0; i<$scope.categories.length;i++){
+            if($rootScope.productToChangeOrUpdate.CategoryID == $scope.categories[i].CategoryID){
+                $rootScope.productToChangeOrUpdate.Category = $scope.categories[i].CategoryName;
+            }
+        }
+        $location.path("/product");
+    }
+    $scope.deleteProduct = function(prod){
+        $http.post("api/product/deleteProduct.php",prod).then(function (results) {
+            if (results.data.status == "success") {
+                $scope.products.splice($scope.products.indexOf(prod),1);
+            }
+            if (results.data.status == "error") {
+                alert(results.data.message);
+            }
+        });
+    }
 });

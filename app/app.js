@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute', 'ngAnimate']);
+var app = angular.module('myApp', ['ngRoute', 'ngAnimate','naif.base64']);
 
 app.config(['$routeProvider',
   function ($routeProvider) {
@@ -37,7 +37,7 @@ app.config(['$routeProvider',
             .when('/product', {
                 title: 'Admin',
                 templateUrl: 'partials/product.html',
-                controller: 'adminCtrl',
+                controller: 'productCtrl',
                 role: 'admin'
             })
             .when('/admin', {
