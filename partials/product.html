@@ -1,0 +1,87 @@
+<table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Count</th>
+                <th scope="col">Category</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="p in products">
+                <td>{{p.ProductID}}</td>
+                <td>{{p.ProductName}}</td>
+                <td>{{p.ProductPrice | currency}}</td>
+                <td>{{p.ProductDescription}}</td>
+                <td>
+                    <img class="img-responsive" style="max-width: 100px; max-height:100px; display:block; margin:auto;" data-ng-src="data:image/png;base64,{{ p.ProductImage }}"
+                        alt="">
+                </td>
+                <td>{{p.ProductCount}}</td>
+                <td>{{getCatName(p.CategoryID)}}</td>
+                <td>
+                    <button class="btn" style="width:100%; margin: 3px;" ng-click="updateProduct(p);">Update</button>
+                    <button class="btn" style="width:100%; margin: 3px;" ng-click="deleteProduct(p);">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<div class="page-content">
+        <div class="row">
+            <div class="space-6"></div>
+            <div class="col-sm-6 col-sm-offset-1">
+                <div class="visible widget-box no-border">
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <h4 class="header blue lighter bigger">
+                                Profile
+                            </h4>
+                            <br/>
+                            <form name="productForm" class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label no-padding-right" >Name</label>
+                                    <div class="col-sm-7">
+                                        <span class="block input-icon input-icon-right">
+                                    <input type="text" class="form-control" placeholder="Name" ng-model="data.UserName" required/>
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label no-padding-right" >Phone</label>
+                                    <div class="col-sm-7">
+                                        <span class="block input-icon input-icon-right">
+                                    <input type="text" class="form-control" placeholder="Phone" name="phone" ng-model="data.UserPhone" required/>
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label no-padding-right" >Address</label>
+                                    <div class="col-sm-7">
+                                        <span class="block input-icon input-icon-right">
+                                    <input type="text" class="form-control" placeholder="Address" ng-model="data.UserAddress" required/>
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="lbl col-sm-5"> </span>
+                                    <div class="col-sm-7">
+                                        
+                                        <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="applyData(data)" data-ng-disabled="productForm.$invalid">
+                                            Confirm changes
+                                        </button>
+                                    </div>
+                                </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>

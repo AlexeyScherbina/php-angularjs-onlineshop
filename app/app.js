@@ -34,6 +34,12 @@ app.config(['$routeProvider',
                 templateUrl: 'partials/cart.html',
                 controller: 'cartCtrl'
             })
+            .when('/product', {
+                title: 'Admin',
+                templateUrl: 'partials/product.html',
+                controller: 'adminCtrl',
+                role: 'admin'
+            })
             .when('/admin', {
                 title: 'Admin',
                 templateUrl: 'partials/admin.html',
